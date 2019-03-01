@@ -1,6 +1,8 @@
 %% hw1
 %  
+
 %% hw1-1
+%
 clc; clear; close all;
 fileID = fopen(".\pic\7.bmp",'r');
 HEX = dec2hex(fread(fileID,'uint8'));
@@ -42,19 +44,21 @@ fprintf("0%sH: %s\n",dec2hex(ip),reshape(HEX((ip+1):(ip+len),:)',1,[])); ip = ip
 fprintf("0%sH: %s\n",dec2hex(ip),reshape(HEX((ip+1):(ip+len),:)',1,[]));
 
 %% hw1-2
+%
 clc; clear; close all;
 lena = imread(".\pic\lena.bmp");
 
-subplot(241); imshow(lena,[0,255]); title('\fontsize{24}lena 8 bit'); lena = bitshift(lena,-1);
-subplot(242); imshow(lena,[0,127]); title('\fontsize{24}lena 7 bit'); lena = bitshift(lena,-1);
-subplot(243); imshow(lena,[0,  63]); title('\fontsize{24}lena 6 bit'); lena = bitshift(lena,-1);
-subplot(244); imshow(lena,[0,  31]); title('\fontsize{24}lena 5 bit'); lena = bitshift(lena,-1);
-subplot(245); imshow(lena,[0,  15]); title('\fontsize{24}lena 4 bit'); lena = bitshift(lena,-1);
-subplot(246); imshow(lena,[0,    7]); title('\fontsize{24}lena 3 bit'); lena = bitshift(lena,-1);
-subplot(247); imshow(lena,[0,    3]); title('\fontsize{24}lena 2 bit'); lena = bitshift(lena,-1);
-subplot(248); imshow(lena,[0,    1]); title('\fontsize{24}lena 1 bit');
+subplot(241); imshow(lena,[0,2^8-1]); title('\fontsize{24}lena 8 bit'); lena = bitshift(lena,-1);
+subplot(242); imshow(lena,[0,2^7-1]); title('\fontsize{24}lena 7 bit'); lena = bitshift(lena,-1);
+subplot(243); imshow(lena,[0,2^6-1]); title('\fontsize{24}lena 6 bit'); lena = bitshift(lena,-1);
+subplot(244); imshow(lena,[0,2^5-1]); title('\fontsize{24}lena 5 bit'); lena = bitshift(lena,-1);
+subplot(245); imshow(lena,[0,2^4-1]); title('\fontsize{24}lena 4 bit'); lena = bitshift(lena,-1);
+subplot(246); imshow(lena,[0,2^3-1]); title('\fontsize{24}lena 3 bit'); lena = bitshift(lena,-1);
+subplot(247); imshow(lena,[0,2^2-1]); title('\fontsize{24}lena 2 bit'); lena = bitshift(lena,-1);
+subplot(248); imshow(lena,[0,2^1-1]); title('\fontsize{24}lena 1 bit');
 
 %% hw1-3
+%
 clc; clear; close all;
 lena = imread(".\pic\lena.bmp");
 
@@ -66,6 +70,7 @@ var(double(lena),0,2)
 var(double(reshape(lena,1,[])))
 
 %% hw1-4
+%
 clc; clear; close all;
 lena = imread(".\pic\lena.bmp");
 
@@ -87,6 +92,7 @@ subplot(223); imshow(lena_bilinear(area(1)*4:area(2)*4,area(3)*4:area(4)*4)); ti
 subplot(224); imshow(lena_bicubic(area(1)*4:area(2)*4,area(3)*4:area(4)*4)); title('lena bicubic');
 
 %% hw1-5
+%
 clc; clear; close all;
 elain = imread(".\pic\elain.bmp");
 lena = imread(".\pic\lena.bmp");
