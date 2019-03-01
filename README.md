@@ -15,6 +15,13 @@
 
 ```
 dist/
+    hw1-2.png
+    hw1-4a.png
+    hw1-4b.png
+    hw1-5a.png
+    hw1-5b.png
+    hw1-5c.png
+    hw1-5d.png
     hw1.pdf
 src/
     pic/
@@ -28,7 +35,7 @@ hw1.pdf
 hw1.txt
 ```
 
-- The `dist/` directory contains all complied reports, which have different types of file.
+- The `dist/` directory contains all complied reports and pictures.
 - The `src/` directory contains all source code and source pictures.
 - The `hw1.pdf` file is the homework 1 report file, same as `dist/hw1.pdf`.
 - The `hw1.txt` file is the homework 1 code file, same as `src/hw1.m`.
