@@ -1,27 +1,59 @@
 %% hw1
 %  
-%% 项目名称：数字图像处理课程作业实验一
-%  
-%% 作业实验任务
-% 
-%% 一、Bmp图像格式简介,以7.bmp为例说明
-fileID = fopen("src\pic\7.bmp",'r');
-HEX = dec2hex(fread(fileID));
+%% hw1-1
+clc; clear; close all;
+
+fileID = fopen(".\pic\7.bmp",'r');
+HEX = dec2hex(fread(fileID,'uint8'));
 fclose(fileID);
 
-%% 二、把lena 512*512图像灰度级逐级递减8-1显示
-% 
-% 
-% 
-%% 三、计算lena图像的均值方差
-% 
-% 
-% 
-%% 四、把lena图像用近邻、双线性和双三次插值法zoom到2048*2048
-% 
-% 
-% 
-%% 五、把lena和elain图像分别进行水平shear（参数可设置为1.5，或者自行选择）和旋转30度，并采用用近邻、双线性和双三次插值法zoom到2048*2048
-% 
-% 
-% 
+% Bitmap file header
+fprintf("Bitmap file header: %s\n",reshape(HEX(1:14,:)',1,[])); ip = 0; len = 2;
+fprintf("000%sH: %s\n",dec2hex(ip),reshape(HEX((ip+1):(ip+len),:)',1,[])); ip = ip + len; len = 4;
+fprintf("000%sH: %s\n",dec2hex(ip),reshape(HEX((ip+1):(ip+len),:)',1,[])); ip = ip + len; len = 2;
+fprintf("000%sH: %s\n",dec2hex(ip),reshape(HEX((ip+1):(ip+len),:)',1,[])); ip = ip + len; len = 2;
+fprintf("000%sH: %s\n",dec2hex(ip),reshape(HEX((ip+1):(ip+len),:)',1,[])); ip = ip + len; len = 4;
+fprintf("000%sH: %s\n",dec2hex(ip),reshape(HEX((ip+1):(ip+len),:)',1,[]));
+
+% DIB header (bitmap information header)
+fprintf("DIB header: %s\n",reshape(HEX(15:50,:)',1,[])); ip = ip + len; len = 4;
+fprintf("000%sH: %s\n",dec2hex(ip),reshape(HEX((ip+1):(ip+len),:)',1,[])); ip = ip + len; len = 4;
+fprintf("00%sH: %s\n",dec2hex(ip),reshape(HEX((ip+1):(ip+len),:)',1,[])); ip = ip + len; len = 4;
+fprintf("00%sH: %s\n",dec2hex(ip),reshape(HEX((ip+1):(ip+len),:)',1,[])); ip = ip + len; len = 2;
+fprintf("00%sH: %s\n",dec2hex(ip),reshape(HEX((ip+1):(ip+len),:)',1,[])); ip = ip + len; len = 2;
+fprintf("00%sH: %s\n",dec2hex(ip),reshape(HEX((ip+1):(ip+len),:)',1,[])); ip = ip + len; len = 4;
+fprintf("00%sH: %s\n",dec2hex(ip),reshape(HEX((ip+1):(ip+len),:)',1,[])); ip = ip + len; len = 4;
+fprintf("00%sH: %s\n",dec2hex(ip),reshape(HEX((ip+1):(ip+len),:)',1,[])); ip = ip + len; len = 4;
+fprintf("00%sH: %s\n",dec2hex(ip),reshape(HEX((ip+1):(ip+len),:)',1,[])); ip = ip + len; len = 4;
+fprintf("00%sH: %s\n",dec2hex(ip),reshape(HEX((ip+1):(ip+len),:)',1,[])); ip = ip + len; len = 4;
+fprintf("00%sH: %s\n",dec2hex(ip),reshape(HEX((ip+1):(ip+len),:)',1,[])); ip = ip + len; len = 4;
+fprintf("00%sH: %s\n",dec2hex(ip),reshape(HEX((ip+1):(ip+len),:)',1,[]));
+
+% Color table
+fprintf("Color table: %s\n",reshape(HEX(51:1078,:)',1,[]));
+
+% Pixel storage
+fprintf("Pixel storage: %s\n",reshape(HEX(1079:1134,:)',1,[]));ip = hex2dec("0436"); len = 8;
+fprintf("0%sH: %s\n",dec2hex(ip),reshape(HEX((ip+1):(ip+len),:)',1,[]));ip = ip + len; len = 8;
+fprintf("0%sH: %s\n",dec2hex(ip),reshape(HEX((ip+1):(ip+len),:)',1,[]));ip = ip + len; len = 8;
+fprintf("0%sH: %s\n",dec2hex(ip),reshape(HEX((ip+1):(ip+len),:)',1,[]));ip = ip + len; len = 8;
+fprintf("0%sH: %s\n",dec2hex(ip),reshape(HEX((ip+1):(ip+len),:)',1,[]));ip = ip + len; len = 8;
+fprintf("0%sH: %s\n",dec2hex(ip),reshape(HEX((ip+1):(ip+len),:)',1,[]));ip = ip + len; len = 8;
+fprintf("0%sH: %s\n",dec2hex(ip),reshape(HEX((ip+1):(ip+len),:)',1,[]));ip = ip + len; len = 8;
+fprintf("0%sH: %s\n",dec2hex(ip),reshape(HEX((ip+1):(ip+len),:)',1,[]));
+
+%% hw1-2
+clc; clear; close all;
+
+
+%% hw1-3
+clc; clear; close all;
+
+
+%% hw1-4
+clc; clear; close all;
+
+
+%% hw1-5
+clc; clear; close all;
+
