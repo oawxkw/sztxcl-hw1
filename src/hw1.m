@@ -64,10 +64,10 @@ lena = imread(".\pic\lena.bmp");
 
 mean(lena,1);
 mean(lena,2);
-fprintf("mean: %f\n",mean(reshape(lena,1,[])));
-var(double(lena),0,1);
-var(double(lena),0,2);
-fprintf("var : %f\n",var(double(reshape(lena,1,[]))));
+fprintf("mean:   %f\n",mean(reshape(lena,1,[])));
+var(double(lena),1,1);
+var(double(lena),1,2);
+fprintf("var:  %f\n",var(double(reshape(lena,1,[])),1));
 
 %% hw1-4
 %
