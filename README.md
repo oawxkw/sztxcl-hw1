@@ -14,17 +14,24 @@
 文件说明
 
 ```
-dist/                               // complied report folder
-    hw1.html                            // HTML version
-    hw1.m                               // MATLAB script version
-    hw1.tex                             // Latex version
-src/                                // source folder
-    pic/                                // source picture floder
+dist/
+    hw1.html
+    hw1.pdf
+    hw1.tex
+src/
+    pic/
         7.bmp
         elain.bmp
         lena.bmp
-    hw1.mlx                             // MATLAB live script (source code)
-hw1.pdf                             // homework 1 report
-hw1.txt                             // homework 1 code
-README.md                           // readme file
+    hw1.m
+    hw1.mlx
+hw1.pdf
+hw1.txt
+.gitignore
+README.md
 ```
+
+- The `dist/` directory contains complied reports, which have different types of file.
+- The `src/` directory contains source code(`.mlx`: MATLAB live script) and source pictures. (since `.mlx` is a binary file, we save it as a `.m` file while pushing it)
+- The `hw1.pdf` file is the homework 1 report file.
+- The `hw1.txt` file is the homework 1 code file.
