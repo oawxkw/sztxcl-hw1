@@ -15,16 +15,14 @@
 
 ```
 dist/
-    hw1.html
+    hw1.docx
     hw1.pdf
-    hw1.tex
 src/
     pic/
         7.bmp
         elain.bmp
         lena.bmp
     hw1.m
-    hw1.mlx
 hw1.pdf
 hw1.txt
 .gitignore
@@ -32,6 +30,6 @@ README.md
 ```
 
 - The `dist/` directory contains all complied reports, which have different types of file.
-- The `src/` directory contains all source code(`.mlx`: MATLAB live script) and source pictures. (since `.mlx` is a binary file, we save it as a `.m` file while pushing it)
+- The `src/` directory contains all source code and source pictures.
 - The `hw1.pdf` file is the homework 1 report file, same as `dist/hw1.pdf`.
 - The `hw1.txt` file is the homework 1 code file, same as `src/hw1.m`.
