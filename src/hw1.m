@@ -62,12 +62,12 @@ subplot(248); imshow(lena,[0,2^1-1]); title('\fontsize{24}lena 1 bit');
 clc; clear; close all;
 lena = imread(".\pic\lena.bmp");
 
-mean(lena,1)
-mean(lena,2)
-mean(reshape(lena,1,[]))
-var(double(lena),0,1)
-var(double(lena),0,2)
-var(double(reshape(lena,1,[])))
+mean(lena,1);
+mean(lena,2);
+fprintf("mean: %f\n",mean(reshape(lena,1,[])));
+var(double(lena),0,1);
+var(double(lena),0,2);
+fprintf("var : %f\n",var(double(reshape(lena,1,[]))));
 
 %% hw1-4
 %
@@ -105,20 +105,32 @@ elain_shear_nearest = imresize(elain_shear,[2048,2048],'nearest');
 elain_shear_bilinear = imresize(elain_shear,[2048,2048],'bilinear');
 elain_shear_bicubic = imresize(elain_shear,[2048,2048],'bicubic');
 
-lane_shear = imwarp(lena, shear);
-lane_shear_nearest = imresize(lane_shear,[2048,2048],'nearest');
-lane_shear_bilinear = imresize(lane_shear,[2048,2048],'bilinear');
-lane_shear_bicubic = imresize(lane_shear,[2048,2048],'bicubic');
+lena_shear = imwarp(lena, shear);
+lena_shear_nearest = imresize(lena_shear,[2048,2048],'nearest');
+lena_shear_bilinear = imresize(lena_shear,[2048,2048],'bilinear');
+lena_shear_bicubic = imresize(lena_shear,[2048,2048],'bicubic');
 
 figure(1)
 subplot(241); imshow(elain_shear); title('\fontsize{24}elain shear'); 
 subplot(242); imshow(elain_shear_nearest); title('\fontsize{24}elain shear nearest');
 subplot(243); imshow(elain_shear_bilinear); title('\fontsize{24}elain shear bilinear');
 subplot(244); imshow(elain_shear_bicubic); title('\fontsize{24}elain shear bicubic');
-subplot(245); imshow(lane_shear); title('\fontsize{24}lena shear'); 
-subplot(246); imshow(lane_shear_nearest); title('\fontsize{24}lena shear nearest');
-subplot(247); imshow(lane_shear_bilinear); title('\fontsize{24}lena shear bilinear');
-subplot(248); imshow(lane_shear_bicubic); title('\fontsize{24}lena shear bicubic');
+area = [200 250 200 250];
+subplot(245); imshow(elain_shear(area(1):area(2),area(3):area(4))); title('\fontsize{24}elain shear'); 
+subplot(246); imshow(elain_shear_nearest(area(1)*4:area(2)*4,area(3)*4:area(4)*4)); title('\fontsize{24}elain shear nearest');
+subplot(247); imshow(elain_shear_bilinear(area(1)*4:area(2)*4,area(3)*4:area(4)*4)); title('\fontsize{24}elain shear bilinear');
+subplot(248); imshow(elain_shear_bicubic(area(1)*4:area(2)*4,area(3)*4:area(4)*4)); title('\fontsize{24}elain shear bicubic');
+
+figure(2)
+subplot(241); imshow(lena_shear); title('\fontsize{24}lena shear'); 
+subplot(242); imshow(lena_shear_nearest); title('\fontsize{24}lena shear nearest');
+subplot(243); imshow(lena_shear_bilinear); title('\fontsize{24}lena shear bilinear');
+subplot(244); imshow(lena_shear_bicubic); title('\fontsize{24}lena shear bicubic');
+area = [200 250 200 250];
+subplot(245); imshow(lena_shear(area(1):area(2),area(3):area(4))); title('\fontsize{24}lena shear'); 
+subplot(246); imshow(lena_shear_nearest(area(1)*4:area(2)*4,area(3)*4:area(4)*4)); title('\fontsize{24}lena shear nearest');
+subplot(247); imshow(lena_shear_bilinear(area(1)*4:area(2)*4,area(3)*4:area(4)*4)); title('\fontsize{24}lena shear bilinear');
+subplot(248); imshow(lena_shear_bicubic(area(1)*4:area(2)*4,area(3)*4:area(4)*4)); title('\fontsize{24}lena shear bicubic');
 
 T_rotation = [cosd(30) -sind(30) 0;sind(30) cosd(30) 0;0 0 1];
 rotation = affine2d(T_rotation);
@@ -128,17 +140,29 @@ elain_rotation_nearest = imresize(elain_rotation,[2048,2048],'nearest');
 elain_rotation_bilinear = imresize(elain_rotation,[2048,2048],'bilinear');
 elain_rotation_bicubic = imresize(elain_rotation,[2048,2048],'bicubic');
 
-lane_rotation = imwarp(lena, rotation);
-lane_rotation_nearest = imresize(lane_rotation,[2048,2048],'nearest');
-lane_rotation_bilinear = imresize(lane_rotation,[2048,2048],'bilinear');
-lane_rotation_bicubic = imresize(lane_rotation,[2048,2048],'bicubic');
+lena_rotation = imwarp(lena, rotation);
+lena_rotation_nearest = imresize(lena_rotation,[2048,2048],'nearest');
+lena_rotation_bilinear = imresize(lena_rotation,[2048,2048],'bilinear');
+lena_rotation_bicubic = imresize(lena_rotation,[2048,2048],'bicubic');
 
-figure(2)
+figure(3)
 subplot(241); imshow(elain_rotation); title('\fontsize{24}elain rotation'); 
 subplot(242); imshow(elain_rotation_nearest); title('\fontsize{24}elain rotation nearest');
 subplot(243); imshow(elain_rotation_bilinear); title('\fontsize{24}elain rotation bilinear');
 subplot(244); imshow(elain_rotation_bicubic); title('\fontsize{24}elain rotation bicubic');
-subplot(245); imshow(lane_rotation); title('\fontsize{24}lena rotation'); 
-subplot(246); imshow(lane_rotation_nearest); title('\fontsize{24}lena rotation nearest');
-subplot(247); imshow(lane_rotation_bilinear); title('\fontsize{24}lena rotation bilinear');
-subplot(248); imshow(lane_rotation_bicubic); title('\fontsize{24}lena rotation bicubic');
+area = [200 250 200 250];
+subplot(245); imshow(elain_rotation(area(1):area(2),area(3):area(4))); title('\fontsize{24}elain rotation'); 
+subplot(246); imshow(elain_rotation_nearest(area(1)*4:area(2)*4,area(3)*4:area(4)*4)); title('\fontsize{24}elain rotation nearest');
+subplot(247); imshow(elain_rotation_bilinear(area(1)*4:area(2)*4,area(3)*4:area(4)*4)); title('\fontsize{24}elain rotation bilinear');
+subplot(248); imshow(elain_rotation_bicubic(area(1)*4:area(2)*4,area(3)*4:area(4)*4)); title('\fontsize{24}elain rotation bicubic');
+
+figure(4)
+subplot(241); imshow(lena_rotation); title('\fontsize{24}lena rotation'); 
+subplot(242); imshow(lena_rotation_nearest); title('\fontsize{24}lena rotation nearest');
+subplot(243); imshow(lena_rotation_bilinear); title('\fontsize{24}lena rotation bilinear');
+subplot(244); imshow(lena_rotation_bicubic); title('\fontsize{24}lena rotation bicubic');
+area = [200 250 200 250];
+subplot(245); imshow(lena_rotation(area(1):area(2),area(3):area(4))); title('\fontsize{24}lena rotation'); 
+subplot(246); imshow(lena_rotation_nearest(area(1)*4:area(2)*4,area(3)*4:area(4)*4)); title('\fontsize{24}lena rotation nearest');
+subplot(247); imshow(lena_rotation_bilinear(area(1)*4:area(2)*4,area(3)*4:area(4)*4)); title('\fontsize{24}lena rotation bilinear');
+subplot(248); imshow(lena_rotation_bicubic(area(1)*4:area(2)*4,area(3)*4:area(4)*4)); title('\fontsize{24}lena rotation bicubic');
