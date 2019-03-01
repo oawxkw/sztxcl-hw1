@@ -31,7 +31,7 @@ hw1.txt
 README.md
 ```
 
-- The `dist/` directory contains complied reports, which have different types of file.
-- The `src/` directory contains source code(`.mlx`: MATLAB live script) and source pictures. (since `.mlx` is a binary file, we save it as a `.m` file while pushing it)
-- The `hw1.pdf` file is the homework 1 report file.
-- The `hw1.txt` file is the homework 1 code file.
+- The `dist/` directory contains all complied reports, which have different types of file.
+- The `src/` directory contains all source code(`.mlx`: MATLAB live script) and source pictures. (since `.mlx` is a binary file, we save it as a `.m` file while pushing it)
+- The `hw1.pdf` file is the homework 1 report file, same as `dist/hw1.pdf`.
+- The `hw1.txt` file is the homework 1 code file, same as `src/hw1.m`.
