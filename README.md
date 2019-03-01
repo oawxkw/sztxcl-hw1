@@ -15,7 +15,6 @@
 
 ```
 dist/
-    hw1.docx
     hw1.pdf
 src/
     pic/
