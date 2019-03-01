@@ -2,7 +2,6 @@
 %  
 %% hw1-1
 clc; clear; close all;
-
 fileID = fopen(".\pic\7.bmp",'r');
 HEX = dec2hex(fread(fileID,'uint8'));
 fclose(fileID);
@@ -57,12 +56,83 @@ subplot(248); imshow(lena,[0,    1]); title('\fontsize{24}lena 1 bit');
 
 %% hw1-3
 clc; clear; close all;
+lena = imread(".\pic\lena.bmp");
 
+mean(lena,1)
+mean(lena,2)
+mean(reshape(lena,1,[]))
+var(double(lena),0,1)
+var(double(lena),0,2)
+var(double(reshape(lena,1,[])))
 
 %% hw1-4
 clc; clear; close all;
+lena = imread(".\pic\lena.bmp");
 
+lena_nearest = imresize(lena,[2048,2048],'nearest');
+lena_bilinear = imresize(lena,[2048,2048],'bilinear');
+lena_bicubic = imresize(lena,[2048,2048],'bicubic');
+
+figure(1)
+subplot(221); imshow(lena); title('lena'); 
+subplot(222); imshow(lena_nearest); title('lena nearest');
+subplot(223); imshow(lena_bilinear); title('lena bilinear');
+subplot(224); imshow(lena_bicubic); title('lena bicubic');
+
+figure(2)
+area = [200 250 200 250];
+subplot(221); imshow(lena(area(1):area(2),area(3):area(4))); title('lena'); 
+subplot(222); imshow(lena_nearest(area(1)*4:area(2)*4,area(3)*4:area(4)*4)); title('lena nearest');
+subplot(223); imshow(lena_bilinear(area(1)*4:area(2)*4,area(3)*4:area(4)*4)); title('lena bilinear');
+subplot(224); imshow(lena_bicubic(area(1)*4:area(2)*4,area(3)*4:area(4)*4)); title('lena bicubic');
 
 %% hw1-5
 clc; clear; close all;
+elain = imread(".\pic\elain.bmp");
+lena = imread(".\pic\lena.bmp");
 
+T_shear = [1 0.2 0; 0 1 0; 0 0 1];
+shear = affine2d(T_shear);
+
+elain_shear = imwarp(elain, shear);
+elain_shear_nearest = imresize(elain_shear,[2048,2048],'nearest');
+elain_shear_bilinear = imresize(elain_shear,[2048,2048],'bilinear');
+elain_shear_bicubic = imresize(elain_shear,[2048,2048],'bicubic');
+
+lane_shear = imwarp(lena, shear);
+lane_shear_nearest = imresize(lane_shear,[2048,2048],'nearest');
+lane_shear_bilinear = imresize(lane_shear,[2048,2048],'bilinear');
+lane_shear_bicubic = imresize(lane_shear,[2048,2048],'bicubic');
+
+figure(1)
+subplot(241); imshow(elain_shear); title('\fontsize{24}elain shear'); 
+subplot(242); imshow(elain_shear_nearest); title('\fontsize{24}elain shear nearest');
+subplot(243); imshow(elain_shear_bilinear); title('\fontsize{24}elain shear bilinear');
+subplot(244); imshow(elain_shear_bicubic); title('\fontsize{24}elain shear bicubic');
+subplot(245); imshow(lane_shear); title('\fontsize{24}lena shear'); 
+subplot(246); imshow(lane_shear_nearest); title('\fontsize{24}lena shear nearest');
+subplot(247); imshow(lane_shear_bilinear); title('\fontsize{24}lena shear bilinear');
+subplot(248); imshow(lane_shear_bicubic); title('\fontsize{24}lena shear bicubic');
+
+T_rotation = [cosd(30) -sind(30) 0;sind(30) cosd(30) 0;0 0 1];
+rotation = affine2d(T_rotation);
+
+elain_rotation = imwarp(elain, rotation);
+elain_rotation_nearest = imresize(elain_rotation,[2048,2048],'nearest');
+elain_rotation_bilinear = imresize(elain_rotation,[2048,2048],'bilinear');
+elain_rotation_bicubic = imresize(elain_rotation,[2048,2048],'bicubic');
+
+lane_rotation = imwarp(lena, rotation);
+lane_rotation_nearest = imresize(lane_rotation,[2048,2048],'nearest');
+lane_rotation_bilinear = imresize(lane_rotation,[2048,2048],'bilinear');
+lane_rotation_bicubic = imresize(lane_rotation,[2048,2048],'bicubic');
+
+figure(2)
+subplot(241); imshow(elain_rotation); title('\fontsize{24}elain rotation'); 
+subplot(242); imshow(elain_rotation_nearest); title('\fontsize{24}elain rotation nearest');
+subplot(243); imshow(elain_rotation_bilinear); title('\fontsize{24}elain rotation bilinear');
+subplot(244); imshow(elain_rotation_bicubic); title('\fontsize{24}elain rotation bicubic');
+subplot(245); imshow(lane_rotation); title('\fontsize{24}lena rotation'); 
+subplot(246); imshow(lane_rotation_nearest); title('\fontsize{24}lena rotation nearest');
+subplot(247); imshow(lane_rotation_bilinear); title('\fontsize{24}lena rotation bilinear');
+subplot(248); imshow(lane_rotation_bicubic); title('\fontsize{24}lena rotation bicubic');
