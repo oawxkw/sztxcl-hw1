@@ -22,10 +22,10 @@ src/
         elain.bmp
         lena.bmp
     hw1.m
-hw1.pdf
-hw1.txt
 .gitignore
 README.md
+hw1.pdf
+hw1.txt
 ```
 
 - The `dist/` directory contains all complied reports, which have different types of file.
